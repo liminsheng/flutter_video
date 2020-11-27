@@ -1,0 +1,9 @@
+{
+  "@@last_modified": "2020-11-27T14:38:05.999044",
+  "title": "豆瓣电影",
+    "@title": {
+      "description": "Title for the application",
+      "type": "text",
+      "placeholders": {}
+    }
+}

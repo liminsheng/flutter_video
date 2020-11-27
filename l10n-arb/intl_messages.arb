@@ -1,0 +1,9 @@
+{
+  "@@last_modified": "2020-11-27T15:28:52.380565",
+  "title": "Douban Movies",
+  "@title": {
+    "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  }
+}
