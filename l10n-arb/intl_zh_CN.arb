@@ -1,9 +1,27 @@
 {
-  "@@last_modified": "2020-11-27T14:38:05.999044",
+  "@@last_modified": "2020-11-27T18:17:54.856736",
   "title": "豆瓣电影",
-    "@title": {
-      "description": "Title for the application",
-      "type": "text",
-      "placeholders": {}
-    }
+  "@title": {
+    "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "theme": "主题",
+  "@theme": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "语言",
+  "@language": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "auto": "跟随系统",
+  "@auto": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  }
 }

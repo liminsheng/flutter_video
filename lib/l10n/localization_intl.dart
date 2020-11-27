@@ -19,6 +19,12 @@ class MyLocalizations {
 
   String get title => Intl.message('Douban Movies',
       name: 'title', desc: 'Title for the application');
+
+  String get theme => Intl.message('Theme', name: 'theme', desc: '');
+
+  String get language => Intl.message('Language', name: 'language', desc: '');
+
+  String get auto => Intl.message('Auto', name: 'auto', desc: '');
 }
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

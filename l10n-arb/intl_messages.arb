@@ -1,8 +1,26 @@
 {
-  "@@last_modified": "2020-11-27T15:28:52.380565",
+  "@@last_modified": "2020-11-27T18:17:54.856736",
   "title": "Douban Movies",
   "@title": {
     "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "Language",
+  "@language": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "auto": "Auto",
+  "@auto": {
+    "description": "",
     "type": "text",
     "placeholders": {}
   }
