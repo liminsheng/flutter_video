@@ -15,6 +15,9 @@ class Subject {
     String id;
     num cover_y;
     bool is_new;
+    String star;
+    List directors;
+    List casts;
     
     factory Subject.fromJson(Map<String,dynamic> json) => _$SubjectFromJson(json);
     Map<String, dynamic> toJson() => _$SubjectToJson(this);

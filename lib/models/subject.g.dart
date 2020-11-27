@@ -16,7 +16,10 @@ Subject _$SubjectFromJson(Map<String, dynamic> json) {
     ..cover = json['cover'] as String
     ..id = json['id'] as String
     ..cover_y = json['cover_y'] as num
-    ..is_new = json['is_new'] as bool;
+    ..is_new = json['is_new'] as bool
+    ..star = json['star'] as String
+    ..directors = json['directors'] as List
+    ..casts = json['casts'] as List;
 }
 
 Map<String, dynamic> _$SubjectToJson(Subject instance) => <String, dynamic>{
@@ -28,5 +31,8 @@ Map<String, dynamic> _$SubjectToJson(Subject instance) => <String, dynamic>{
       'cover': instance.cover,
       'id': instance.id,
       'cover_y': instance.cover_y,
-      'is_new': instance.is_new
+      'is_new': instance.is_new,
+      'star': instance.star,
+      'directors': instance.directors,
+      'casts': instance.casts
     };

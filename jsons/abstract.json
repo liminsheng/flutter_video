@@ -1,0 +1,39 @@
+{
+  "episodes_count":"",
+  "star":3.5,
+  "blacklisted":"available",
+  "title":"姜子牙‎ (2020)",
+  "url":"https://movie.douban.com/subject/25907124/",
+  "collection_status":"",
+  "rate":"6.9",
+  "short_comment":{
+    "content":"申公豹：“姜子牙，你保护世界，我保护你。”",
+    "author":"飞侠式拼搏"
+  },
+  "is_tv":false,
+  "subtype":"Movie",
+  "directors":[
+    "程腾",
+    "李炜",
+    "李夏",
+    "王昕"
+  ],
+  "actors":[
+    "郑希",
+    "杨凝",
+    "图特哈蒙",
+    "阎么么",
+    "季冠霖",
+    "姜广涛"
+  ],
+  "duration":"110分钟",
+  "region":"中国大陆",
+  "playable":true,
+  "id":"25907124",
+  "types":[
+    "剧情",
+    "动画",
+    "奇幻"
+  ],
+  "release_year":"2020"
+}

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_video/common/NetRequest.dart';
+import 'package:flutter_video/common/global.dart';
+import 'package:flutter_video/models/index.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Global.init().then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

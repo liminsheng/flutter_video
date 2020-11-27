@@ -7,5 +7,16 @@
   "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2621219978.webp",
   "id": "25907124",
   "cover_y": 4367,
-  "is_new": false
+  "is_new": false,
+  "star":"45",
+  "directors":[
+    "斯科特·弗兰克"
+  ],
+  "casts":[
+    "安雅·泰勒-乔伊",
+    "伊斯拉·约翰斯顿",
+    "玛丽埃尔·海勒",
+    "托马斯·布罗迪-桑斯特",
+    "马辛·多洛辛斯基"
+  ]
 }
