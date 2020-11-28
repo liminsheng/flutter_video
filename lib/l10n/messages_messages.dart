@@ -21,9 +21,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
+    "movie" : MessageLookupByLibrary.simpleMessage("Movie"),
+    "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "rank" : MessageLookupByLibrary.simpleMessage("Rank"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
-    "title" : MessageLookupByLibrary.simpleMessage("Douban Movies")
+    "title" : MessageLookupByLibrary.simpleMessage("Douban Movies"),
+    "tv" : MessageLookupByLibrary.simpleMessage("Tv")
   };
 }

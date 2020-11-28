@@ -4,7 +4,11 @@ import 'package:flutter_video/common/global.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 import 'package:flutter_video/routes/home_route.dart';
 import 'package:flutter_video/routes/language_route.dart';
+import 'package:flutter_video/routes/movie_route.dart';
+import 'package:flutter_video/routes/profile_route.dart';
+import 'package:flutter_video/routes/rank_route.dart';
 import 'package:flutter_video/routes/theme_change_route.dart';
+import 'package:flutter_video/routes/tv_route.dart';
 import 'package:flutter_video/states/locale_model.dart';
 import 'package:flutter_video/states/theme_model.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +60,10 @@ class MyApp extends StatelessWidget {
             },
             home: HomeRoute(),
             routes: {
+              'movie': (context) => MovieRoute(),
+              'tv': (context) => TvRoute(),
+              'rank': (context) => RankRoute(),
+              'profile': (context) => ProfileRoute(),
               'themes': (context) => ThemeChangeRoute(),
               'language': (context) => LanguageRoute(),
             },

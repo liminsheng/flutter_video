@@ -1,5 +1,6 @@
 export 'abstract.dart' ; 
 export 'cacheConfig.dart' ; 
+export 'myBanner.dart' ; 
 export 'newSearchSubjects.dart' ; 
 export 'profile.dart' ; 
 export 'recommend.dart' ; 

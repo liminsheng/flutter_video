@@ -21,19 +21,28 @@ class MyDrawer extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      padding: EdgeInsets.only(top: 40, bottom: 20),
-      height: 350,
+      padding: EdgeInsets.only(top: 20, bottom: 20),
+      height: 250,
       child: Row(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: ClipOval(
-              child: Image.asset('images/avatar-default.jpg', width: 80),
+              child: Image.asset(
+                'images/avatar-default.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Text(
             MyLocalizations.of(context).title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'ZhiMangXing'),
           )
         ],
       ),

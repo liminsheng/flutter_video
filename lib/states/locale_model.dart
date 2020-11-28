@@ -4,7 +4,7 @@ import 'package:flutter_video/states/profile_change_notifier.dart';
 class LocaleModel extends ProfileChangeNotifier {
   Locale getLocale() {
     if (profile.locale == null) return null;
-    var t = profile.locale.split(',');
+    var t = profile.locale.split('_');
     return Locale(t[0], t[1]);
   }
 

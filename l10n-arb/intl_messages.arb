@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-11-27T18:17:54.856736",
+  "@@last_modified": "2020-11-28T15:55:18.376469",
   "title": "Douban Movies",
   "@title": {
     "description": "Title for the application",
@@ -18,8 +18,26 @@
     "type": "text",
     "placeholders": {}
   },
-  "auto": "Auto",
-  "@auto": {
+  "movie": "Movie",
+  "@movie": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "tv": "Tv",
+  "@tv": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "rank": "Rank",
+  "@rank": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "profile": "Profile",
+  "@profile": {
     "description": "",
     "type": "text",
     "placeholders": {}

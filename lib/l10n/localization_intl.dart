@@ -24,7 +24,11 @@ class MyLocalizations {
 
   String get language => Intl.message('Language', name: 'language', desc: '');
 
-  String get auto => Intl.message('Auto', name: 'auto', desc: '');
+  String get auto => Intl.message('Auto', name: 'Auto', desc: '');
+  String get movie => Intl.message('Movie', name: 'movie', desc: '');
+  String get tv => Intl.message('Tv', name: 'tv', desc: '');
+  String get rank => Intl.message('Rank', name: 'rank', desc: '');
+  String get profile => Intl.message('Profile', name: 'profile', desc: '');
 }
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

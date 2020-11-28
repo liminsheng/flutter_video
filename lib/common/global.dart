@@ -28,6 +28,12 @@ class Global {
   //是否为release版
   static bool get isRelease => bool.fromEnvironment('dart.vm.product');
 
+  static const type_movie = 'movie';
+  static const type_tv = 'tv';
+  static const sort_recommend = 'recommend';
+  static const sort_time = 'time';
+  static const sort_rank = 'rank';
+
   //初始化全局信息，会在App启动时调用
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
