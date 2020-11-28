@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_video/common/global.dart';
@@ -91,13 +90,9 @@ class NetRequest {
   }
 
   //获取节目的更多信息
-  Future<Abstract> getSubjectsAbstract(
-      {int subjectId,
-        refresh = false}) async {
+  Future<Abstract> getSubjectsAbstract({int subjectId, refresh = false}) async {
     //query参数，用于接收分页信息
-    Map<String, dynamic> queryParameters = {
-      'subject_id': subjectId
-    };
+    Map<String, dynamic> queryParameters = {'subject_id': subjectId};
     if (refresh) {
       // 列表下拉刷新，需要删除缓存（拦截器中会读取这些信息）
       _options.extra.addAll({"refresh": refresh, "list": false});
@@ -110,13 +105,32 @@ class NetRequest {
     return SubjectAbstract.fromJson(response.data)?.subject;
   }
 
-  //获取排行榜
-  Future<List<Recommend>> getRecommend(
-      {refresh = false}) async {
+  //获取Top排行榜
+  Future<List<TopSubject>> getTopList(
+      {int type, int start, int limit, refresh = false}) async {
     //query参数，用于接收分页信息
     Map<String, dynamic> queryParameters = {
-      'tag': '热门'
+      'type': type,
+      'interval_id': '100:90',
+      'start': start,
+      'limit': limit
     };
+    if (refresh) {
+      // 列表下拉刷新，需要删除缓存（拦截器中会读取这些信息）
+      _options.extra.addAll({"refresh": refresh, "list": true});
+    }
+    var response = await dio.get<List>(
+      "j/chart/top_list",
+      queryParameters: queryParameters,
+      options: _options,
+    );
+    return response.data.map((e) => TopSubject.fromJson(e)).toList();
+  }
+
+  //获取热门推荐
+  Future<List<Recommend>> getRecommend({refresh = false}) async {
+    //query参数，用于接收分页信息
+    Map<String, dynamic> queryParameters = {'tag': '热门'};
     if (refresh) {
       // 列表下拉刷新，需要删除缓存（拦截器中会读取这些信息）
       _options.extra.addAll({"refresh": refresh, "list": true});
@@ -129,8 +143,7 @@ class NetRequest {
     return RecommendGroups.fromJson(response.data)?.groups;
   }
 
-  Future<List<Subject>> getNewSearchSubjects(
-      {refresh = false}) async {
+  Future<List<Subject>> getNewSearchSubjects({refresh = false}) async {
     //query参数，用于接收分页信息
     Map<String, dynamic> queryParameters = {
       'sort': 'U',
@@ -151,8 +164,8 @@ class NetRequest {
   }
 
   ///https://movie.douban.com/j/subject_abstract?subject_id=25907124
-///https://movie.douban.com/j/tv/recommend_groups?tag=热门
-///https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=0
-///https://search.douban.com/movie/subject_search?search_text=棋魂&cat=1002
-///https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action=&start=0&limit=20
+  ///https://movie.douban.com/j/tv/recommend_groups?tag=热门
+  ///https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=0
+  ///https://search.douban.com/movie/subject_search?search_text=棋魂&cat=1002
+  ///https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action=&start=0&limit=20
 }

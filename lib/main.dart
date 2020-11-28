@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_video/common/global.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
+import 'package:flutter_video/routes/download_zone_route.dart';
 import 'package:flutter_video/routes/home_route.dart';
 import 'package:flutter_video/routes/language_route.dart';
 import 'package:flutter_video/routes/movie_route.dart';
 import 'package:flutter_video/routes/profile_route.dart';
 import 'package:flutter_video/routes/rank_route.dart';
 import 'package:flutter_video/routes/theme_change_route.dart';
+import 'package:flutter_video/routes/top_route.dart';
 import 'package:flutter_video/routes/tv_route.dart';
 import 'package:flutter_video/states/locale_model.dart';
 import 'package:flutter_video/states/theme_model.dart';
@@ -66,6 +68,8 @@ class MyApp extends StatelessWidget {
               'profile': (context) => ProfileRoute(),
               'themes': (context) => ThemeChangeRoute(),
               'language': (context) => LanguageRoute(),
+              'top': (context) => TopRoute(),
+              'downloadZone': (context) => DownloadZoneRoute(),
             },
           );
         },

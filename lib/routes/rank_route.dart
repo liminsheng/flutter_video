@@ -53,6 +53,13 @@ class _RankRouteState extends State<RankRoute>
 
   Widget _buildItem(BuildContext context, int index) {
     return InkWell(
+      onTap: () {
+        if (_categoryList[index].type == 32) {
+          Navigator.pushNamed(context, 'downloadZone');
+        } else {
+          Navigator.pushNamed(context, 'top', arguments: _categoryList[index]);
+        }
+      },
       child: Container(
         decoration: BoxDecoration(
             color: _randomColor, borderRadius: BorderRadius.circular(4)),
