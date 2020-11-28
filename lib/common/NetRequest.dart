@@ -154,4 +154,5 @@ class NetRequest {
 ///https://movie.douban.com/j/tv/recommend_groups?tag=热门
 ///https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=0
 ///https://search.douban.com/movie/subject_search?search_text=棋魂&cat=1002
+///https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action=&start=0&limit=20
 }

@@ -21,7 +21,7 @@ class _MovieItemState extends State<MovieItem> {
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) {
-              return WebView(url: subject.url, title: '');
+              return WebView(url: subject.url);
             }));
       },
       child: Column(

@@ -35,6 +35,7 @@ class _MoviePageState extends State<MoviePage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: EdgeInsets.all(8),
       child: RefreshIndicator(

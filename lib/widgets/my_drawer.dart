@@ -37,7 +37,7 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           Text(
-            MyLocalizations.of(context).title,
+            '夜雨声烦',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

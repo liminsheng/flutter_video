@@ -23,5 +23,35 @@
     "description": "",
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "movie": "电影",
+    "@movie": {
+      "description": "",
+      "type": "text",
+      "placeholders": {}
+    },
+    "tv": "电视剧",
+    "@tv": {
+      "description": "",
+      "type": "text",
+      "placeholders": {}
+    },
+    "rank": "排行榜",
+    "@rank": {
+      "description": "",
+      "type": "text",
+      "placeholders": {}
+    },
+    "profile": "我的",
+    "@profile": {
+      "description": "",
+      "type": "text",
+      "placeholders": {}
+    },
+  "waiting": "请稍等...",
+    "@waiting": {
+      "description": "",
+      "type": "text",
+      "placeholders": {}
+    }
 }

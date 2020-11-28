@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-11-28T15:55:18.376469",
+  "@@last_modified": "2020-11-28T23:25:37.648806",
   "title": "Douban Movies",
   "@title": {
     "description": "Title for the application",
@@ -38,6 +38,12 @@
   },
   "profile": "Profile",
   "@profile": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "waiting": "Waiting...",
+  "@waiting": {
     "description": "",
     "type": "text",
     "placeholders": {}

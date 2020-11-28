@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "rank" : MessageLookupByLibrary.simpleMessage("Rank"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
     "title" : MessageLookupByLibrary.simpleMessage("Douban Movies"),
-    "tv" : MessageLookupByLibrary.simpleMessage("Tv")
+    "tv" : MessageLookupByLibrary.simpleMessage("Tv"),
+    "waiting" : MessageLookupByLibrary.simpleMessage("Waiting...")
   };
 }

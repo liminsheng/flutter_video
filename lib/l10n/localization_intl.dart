@@ -29,6 +29,7 @@ class MyLocalizations {
   String get tv => Intl.message('Tv', name: 'tv', desc: '');
   String get rank => Intl.message('Rank', name: 'rank', desc: '');
   String get profile => Intl.message('Profile', name: 'profile', desc: '');
+  String get waiting => Intl.message('Waiting...', name: 'waiting', desc: '');
 }
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

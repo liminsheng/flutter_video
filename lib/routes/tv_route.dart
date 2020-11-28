@@ -50,7 +50,9 @@ class _TvRouteState extends State<TvRoute>
   ///获取标签
   void _getTags() {
     NetRequest(context).getTags(type: Global.type_tv).then((value) {
-      print(value);
+      if (value.isNotEmpty && value[0] == '热门') {
+        value.removeAt(0);
+      }
       setState(() {
         _tags = value;
       });

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_video/l10n/localization_intl.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class WebView extends StatefulWidget {
@@ -96,7 +97,13 @@ class _WebViewState extends State<WebView> {
               initialChild: Container(
                 color: Colors.white,
                 child: Center(
-                  child: Text('Waiting...'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      Text(MyLocalizations.of(context).waiting)
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -134,7 +141,7 @@ class _WebViewState extends State<WebView> {
               ),
             ),
             Center(
-              child: Text(widget.title ?? '',
+              child: Text(widget.title ?? MyLocalizations.of(context).title,
                   style: TextStyle(fontSize: 20, color: backButtonColor)),
             ),
           ],

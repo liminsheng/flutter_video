@@ -15,6 +15,19 @@ const _themes = <MaterialColor>[
   Colors.red,
 ];
 
+const _colorList = <String>[
+  '19CAAD',
+  '8CC7B5',
+  'A0EEE1',
+  'BEE7E9',
+  'BEEDC7',
+  'D6D5B7',
+  'D1BA74',
+  'E6CEAC',
+  'ECAD9E',
+  'F4606C'
+];
+
 class Global {
   static SharedPreferences _prefs;
   static Profile profile = Profile();
@@ -24,6 +37,8 @@ class Global {
 
   //可选的主题列表
   static List<MaterialColor> get themes => _themes;
+
+  static List<String> get colors => _colorList;
 
   //是否为release版
   static bool get isRelease => bool.fromEnvironment('dart.vm.product');

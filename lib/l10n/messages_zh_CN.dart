@@ -22,7 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "language" : MessageLookupByLibrary.simpleMessage("语言"),
+    "movie" : MessageLookupByLibrary.simpleMessage("电影"),
+    "profile" : MessageLookupByLibrary.simpleMessage("我的"),
+    "rank" : MessageLookupByLibrary.simpleMessage("排行榜"),
     "theme" : MessageLookupByLibrary.simpleMessage("主题"),
-    "title" : MessageLookupByLibrary.simpleMessage("豆瓣电影")
+    "title" : MessageLookupByLibrary.simpleMessage("豆瓣电影"),
+    "tv" : MessageLookupByLibrary.simpleMessage("电视剧"),
+    "waiting" : MessageLookupByLibrary.simpleMessage("请稍等...")
   };
 }

@@ -50,7 +50,6 @@ class _MovieRouteState extends State<MovieRoute>
   ///获取标签
   void _getTags() {
     NetRequest(context).getTags(type: Global.type_movie).then((value) {
-      print(value);
       setState(() {
         _tags = value;
       });
