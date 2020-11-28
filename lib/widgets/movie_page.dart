@@ -36,22 +36,39 @@ class _MoviePageState extends State<MoviePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Padding(
-      padding: EdgeInsets.all(8),
-      child: RefreshIndicator(
-        onRefresh: () {
-          _subjectList.clear();
-          return _retrieveData();
-        },
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-              childAspectRatio: 0.55,
+    return RefreshIndicator(
+      onRefresh: () {
+        _subjectList.clear();
+        return _retrieveData();
+      },
+      child: CustomScrollView(
+        slivers: [
+          _bannerList.isNotEmpty
+              ? SliverFixedExtentList(
+                  itemExtent: 160,
+                  delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return _buildBanner();
+                  }, childCount: 1),
+                )
+              : SliverPadding(padding: EdgeInsets.zero),
+          SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: SliverGrid(
+              //Grid
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4, //Grid按两列显示
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                childAspectRatio: 0.55,
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                _buildItem,
+                childCount: _subjectList.length,
+              ),
             ),
-            itemCount: _subjectList.length,
-            itemBuilder: _buildItem),
+          ),
+        ],
       ),
     );
   }
@@ -86,21 +103,28 @@ class _MoviePageState extends State<MoviePage>
   }
 
   Widget _buildBanner() {
-    return Container(
-      height: 160,
-      child: Swiper(
-        itemCount: _bannerList.length,
-        autoplayDelay: 3000,
-        pagination: SwiperPagination(
-            alignment: Alignment.bottomLeft,
-            builder: SwiperPagination.fraction,
-            margin: EdgeInsets.all(5)),
-        itemBuilder: (context, index) {
-          return BannerItem(
-            banner: _bannerList[index],
-          );
-        },
-        autoplay: true,
+    return PhysicalModel(
+      color: Color(0xfff0f0f0),
+      child: Container(
+        height: 160,
+        child: Swiper(
+          itemCount: _bannerList.length,
+          autoplayDelay: 3000,
+          pagination: SwiperPagination(
+              alignment: Alignment.bottomRight,
+              builder: FractionPaginationBuilder(
+                color: Color(0xffadadad),
+                fontSize: 18,
+                activeFontSize: 25,
+              ),
+              margin: EdgeInsets.all(5)),
+          itemBuilder: (context, index) {
+            return BannerItem(
+              banner: _bannerList[index],
+            );
+          },
+          autoplay: true,
+        ),
       ),
     );
   }
