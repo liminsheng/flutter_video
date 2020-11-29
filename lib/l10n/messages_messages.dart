@@ -21,10 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "blue" : MessageLookupByLibrary.simpleMessage("Blue"),
+    "cyan" : MessageLookupByLibrary.simpleMessage("Cyan"),
+    "green" : MessageLookupByLibrary.simpleMessage("Green"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "movie" : MessageLookupByLibrary.simpleMessage("Movie"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "rank" : MessageLookupByLibrary.simpleMessage("Rank"),
+    "red" : MessageLookupByLibrary.simpleMessage("Red"),
+    "teal" : MessageLookupByLibrary.simpleMessage("Teal"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
     "title" : MessageLookupByLibrary.simpleMessage("Douban Movies"),
     "tv" : MessageLookupByLibrary.simpleMessage("Tv"),

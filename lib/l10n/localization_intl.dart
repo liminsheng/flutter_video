@@ -30,6 +30,11 @@ class MyLocalizations {
   String get rank => Intl.message('Rank', name: 'rank', desc: '');
   String get profile => Intl.message('Profile', name: 'profile', desc: '');
   String get waiting => Intl.message('Waiting...', name: 'waiting', desc: '');
+  String get blue => Intl.message('Blue', name: 'blue', desc: '');
+  String get cyan => Intl.message('Cyan', name: 'cyan', desc: '');
+  String get teal => Intl.message('Teal', name: 'teal', desc: '');
+  String get green => Intl.message('Green', name: 'green', desc: '');
+  String get red => Intl.message('Red', name: 'red', desc: '');
 }
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

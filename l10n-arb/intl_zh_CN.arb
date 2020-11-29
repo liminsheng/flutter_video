@@ -53,5 +53,35 @@
       "description": "",
       "type": "text",
       "placeholders": {}
-    }
+  },
+  "blue": "天空蓝",
+  "@blue": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cyan": "天青色",
+  "@cyan": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "teal": "抹茶绿",
+  "@teal": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "green": "清新绿",
+  "@green": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "red": "烈焰红",
+  "@red": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  }
 }

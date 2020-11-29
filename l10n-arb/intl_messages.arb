@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-11-28T23:25:37.648806",
+  "@@last_modified": "2020-11-29T15:51:49.437480",
   "title": "Douban Movies",
   "@title": {
     "description": "Title for the application",
@@ -44,6 +44,36 @@
   },
   "waiting": "Waiting...",
   "@waiting": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "blue": "Blue",
+  "@blue": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cyan": "Cyan",
+  "@cyan": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "teal": "Teal",
+  "@teal": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "green": "Green",
+  "@green": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "red": "Red",
+  "@red": {
     "description": "",
     "type": "text",
     "placeholders": {}
