@@ -1,6 +1,7 @@
 export 'abstract.dart' ; 
 export 'cacheConfig.dart' ; 
 export 'category.dart' ; 
+export 'downloadSubject.dart' ; 
 export 'myBanner.dart' ; 
 export 'newSearchSubjects.dart' ; 
 export 'profile.dart' ; 

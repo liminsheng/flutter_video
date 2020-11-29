@@ -45,7 +45,6 @@ class _RankRouteState extends State<RankRoute>
       setState(() {
         _categoryList = list.map((e) => Category.fromJson(e)).toList();
       });
-      print(_categoryList[0].title);
     });
   }
 
