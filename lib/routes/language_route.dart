@@ -30,7 +30,7 @@ class LanguageRoute extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(my.language),
+        title: Text(my.language, style: TextStyle(fontFamily: 'ZhiMangXing')),
       ),
       body: ListView(
         children: [

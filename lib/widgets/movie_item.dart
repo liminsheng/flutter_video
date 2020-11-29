@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/models/index.dart';
 import 'package:flutter_video/widgets/webview.dart';
 
@@ -43,7 +44,7 @@ class _MovieItemState extends State<MovieItem> {
             subject.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 14, color: Colors.black),
+            style: TextStyle(fontSize: 28.nsp, color: Colors.black),
           ),
           Row(
             children: [
@@ -52,7 +53,7 @@ class _MovieItemState extends State<MovieItem> {
                   : RatingBar(
                       initialRating: double.parse(subject.rate) / 2.0,
                       minRating: 0.5,
-                      itemSize: 14,
+                      itemSize: 28.nsp,
                       updateOnDrag: false,
                       direction: Axis.horizontal,
                       allowHalfRating: true,
@@ -77,7 +78,7 @@ class _MovieItemState extends State<MovieItem> {
                     ),
               Text(
                 subject.rate,
-                style: TextStyle(color: Colors.grey, fontSize: 12),
+                style: TextStyle(color: Colors.grey, fontSize: 24.nsp),
               ),
             ],
           )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 
 class ProfileRoute extends StatefulWidget {
@@ -31,28 +32,45 @@ class _ProfileRouteState extends State<ProfileRoute> {
     return Container(
       alignment: Alignment.topLeft,
       color: Theme.of(context).primaryColor,
-      padding: EdgeInsets.only(top: 15),
-      height: 160,
-      child: Row(
+      padding: EdgeInsets.only(top: 60.h),
+      height: 320.h,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: ClipOval(
-              child: Image.asset(
-                'images/avatar-default.jpg',
-                width: 60,
-                height: 60,
-                fit: BoxFit.cover,
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                child: ClipOval(
+                  child: Image.asset(
+                    'images/avatar-default.jpg',
+                    width: 120.w,
+                    height: 120.w,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              Text(
+                '夜雨声烦',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 36.nsp,
+                    fontFamily: 'ZhiMangXing'),
+              )
+            ],
           ),
-          Text(
-            '夜雨声烦',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 18,
-                fontFamily: 'ZhiMangXing'),
+          Padding(
+            padding: EdgeInsets.fromLTRB(180.w, 20.h, 30.w, 20.h),
+            child: Text(
+              '这家伙太懒了，什么都没有留下。',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36.nsp,
+                  fontFamily: 'ZhiMangXing'),
+            ),
           )
         ],
       ),

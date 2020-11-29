@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -21,17 +22,17 @@ class MyDrawer extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      padding: EdgeInsets.only(top: 20, bottom: 20),
-      height: 250,
+      padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
+      height: 500.h,
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 32.w),
             child: ClipOval(
               child: Image.asset(
                 'images/avatar-default.jpg',
-                width: 80,
-                height: 80,
+                width: 160.w,
+                height: 160.w,
                 fit: BoxFit.cover,
               ),
             ),
@@ -41,7 +42,7 @@ class MyDrawer extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 40.nsp,
                 fontFamily: 'ZhiMangXing'),
           )
         ],

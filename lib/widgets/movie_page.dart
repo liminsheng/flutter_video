@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_video/common/NetRequest.dart';
 import 'package:flutter_video/common/global.dart';
@@ -45,7 +46,7 @@ class _MoviePageState extends State<MoviePage>
         slivers: [
           _bannerList.isNotEmpty
               ? SliverFixedExtentList(
-                  itemExtent: 160,
+                  itemExtent: 320.h,
                   delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
                     return _buildBanner();
@@ -57,9 +58,9 @@ class _MoviePageState extends State<MoviePage>
             sliver: SliverGrid(
               //Grid
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, //Grid按两列显示
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
+                crossAxisCount: 4, //Grid按4列显示
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
                 childAspectRatio: 0.55,
               ),
               delegate: new SliverChildBuilderDelegate(
@@ -106,7 +107,7 @@ class _MoviePageState extends State<MoviePage>
     return PhysicalModel(
       color: Color(0xfff0f0f0),
       child: Container(
-        height: 160,
+        height: 320.h,
         child: Swiper(
           itemCount: _bannerList.length,
           autoplayDelay: 3000,
@@ -114,8 +115,8 @@ class _MoviePageState extends State<MoviePage>
               alignment: Alignment.bottomRight,
               builder: FractionPaginationBuilder(
                 color: Color(0xffadadad),
-                fontSize: 18,
-                activeFontSize: 25,
+                fontSize: 36.nsp,
+                activeFontSize: 50.nsp,
               ),
               margin: EdgeInsets.all(5)),
           itemBuilder: (context, index) {

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/models/index.dart';
 import 'package:flutter_video/widgets/webview.dart';
 
@@ -33,20 +34,20 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
               borderRadius: BorderRadius.circular(6),
               child: CachedNetworkImage(
                 imageUrl: subject.cover_url,
-                width: 110,
-                height: 160,
+                width: 220.w,
+                height: 320.h,
                 fit: BoxFit.cover,
               ),
             ),
             Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: EdgeInsets.only(left: 40.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        margin: EdgeInsets.fromLTRB(0, 20.h, 0, 20.h),
                         child: Row(
                           children: [
                             Text(
@@ -54,7 +55,7 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 36.nsp,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -63,7 +64,7 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 36.nsp,
                                   color: Colors.green,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -76,7 +77,7 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 36.nsp,
                                         color: Colors.orange,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -88,25 +89,25 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                         subject.actors.toString(),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 30.nsp, color: Colors.grey),
                       ),
                       Text(
                         subject.types.toString(),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 30.nsp, color: Colors.grey),
                       ),
                       Text(
                         subject.regions.toString(),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 30.nsp, color: Colors.grey),
                       ),
                       Text(
                         subject.release_date.toString(),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 30.nsp, color: Colors.grey),
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,7 +118,7 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                                   initialRating:
                                       double.parse(subject.rating[0]) / 2.0,
                                   minRating: 0.5,
-                                  itemSize: 20,
+                                  itemSize: 40.nsp,
                                   updateOnDrag: false,
                                   direction: Axis.horizontal,
                                   allowHalfRating: true,
@@ -141,7 +142,7 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                                   },
                                 ),
                           Container(
-                            margin: EdgeInsets.only(left: 5),
+                            margin: EdgeInsets.only(left: 5.w),
                             child: Text(
                               subject.rating[0],
                               style:
@@ -149,11 +150,11 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 20, bottom: 2),
+                            margin: EdgeInsets.only(left: 40.w, bottom: 2.h),
                             child: Text(
                               '${subject.vote_count}人评价',
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 16),
+                                  TextStyle(color: Colors.grey, fontSize: 32.nsp),
                             ),
                           ),
                         ],

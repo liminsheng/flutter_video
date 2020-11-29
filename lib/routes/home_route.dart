@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 import 'package:flutter_video/routes/movie_route.dart';
 import 'package:flutter_video/routes/profile_route.dart';
@@ -18,6 +19,7 @@ class _HomeRouteState extends State<HomeRoute> {
   @override
   Widget build(BuildContext context) {
     var my = MyLocalizations.of(context);
+    ScreenUtil.init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(

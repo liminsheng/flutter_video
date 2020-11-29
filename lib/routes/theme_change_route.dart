@@ -9,7 +9,8 @@ class ThemeChangeRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(MyLocalizations.of(context).theme),
+        title: Text(MyLocalizations.of(context).theme,
+            style: TextStyle(fontFamily: 'ZhiMangXing')),
       ),
       body: ListView(
         //显示主题色块

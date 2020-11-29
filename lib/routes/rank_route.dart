@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/common/global.dart';
 import 'package:flutter_video/models/category.dart';
 
@@ -66,7 +67,7 @@ class _RankRouteState extends State<RankRoute>
         child: Center(
           child: Text(
             _categoryList[index].title,
-            style: TextStyle(color: Colors.blueGrey, fontSize: 16),
+            style: TextStyle(color: Colors.blueGrey, fontSize: 32.nsp),
           ),
         ),
       ),
