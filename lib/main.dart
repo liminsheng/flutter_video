@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_video/common/global.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
+import 'package:flutter_video/routes/detail_route.dart';
 import 'package:flutter_video/routes/download_zone_route.dart';
 import 'package:flutter_video/routes/home_route.dart';
 import 'package:flutter_video/routes/language_route.dart';
@@ -70,6 +71,8 @@ class MyApp extends StatelessWidget {
               'language': (context) => LanguageRoute(),
               'top': (context) => TopRoute(),
               'downloadZone': (context) => DownloadZoneRoute(),
+              'detail': (context) => DetailRoute(
+                  downloadSubject: ModalRoute.of(context).settings.arguments),
             },
           );
         },

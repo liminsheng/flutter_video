@@ -8,6 +8,7 @@ class DownloadSubject {
 
     String episode;
     String img;
+    String cover;
     String title;
     String h5_url;
     String url;

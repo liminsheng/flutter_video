@@ -10,6 +10,7 @@ DownloadSubject _$DownloadSubjectFromJson(Map<String, dynamic> json) {
   return DownloadSubject()
     ..episode = json['episode'] as String
     ..img = json['img'] as String
+    ..cover = json['cover'] as String
     ..title = json['title'] as String
     ..h5_url = json['h5_url'] as String
     ..url = json['url'] as String
@@ -23,6 +24,7 @@ Map<String, dynamic> _$DownloadSubjectToJson(DownloadSubject instance) =>
     <String, dynamic>{
       'episode': instance.episode,
       'img': instance.img,
+      'cover': instance.cover,
       'title': instance.title,
       'h5_url': instance.h5_url,
       'url': instance.url,

@@ -90,7 +90,7 @@ class NetRequest {
   }
 
   //获取节目的更多信息
-  Future<Abstract> getSubjectsAbstract({int subjectId, refresh = false}) async {
+  Future<Abstract> getSubjectsAbstract({String subjectId, refresh = false}) async {
     //query参数，用于接收分页信息
     Map<String, dynamic> queryParameters = {'subject_id': subjectId};
     if (refresh) {
