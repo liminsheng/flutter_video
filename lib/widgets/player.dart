@@ -1,8 +1,6 @@
 import 'package:auto_orientation/auto_orientation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
@@ -16,6 +14,7 @@ class Player extends StatefulWidget {
   final String type;
   final double width;
   final double height;
+  final Function toggleFullScreen;
 
   const Player(
       {Key key,
@@ -23,7 +22,8 @@ class Player extends StatefulWidget {
       this.url,
       this.type = UrlType.network,
       this.width,
-      this.height})
+      this.height,
+      this.toggleFullScreen})
       : super(key: key);
 
   @override
@@ -39,6 +39,7 @@ class _PlayerState extends State<Player> {
   @override
   void initState() {
     super.initState();
+    AutoOrientation.portraitAutoMode();
     print('Player url: ${widget.url}');
     controller = VideoPlayerController.network(widget.url);
     controller.addListener(_videoListener);
@@ -51,6 +52,7 @@ class _PlayerState extends State<Player> {
   void dispose() {
     controller.removeListener(_videoListener);
     controller.dispose();
+    AutoOrientation.portraitAutoMode();
     super.dispose();
   }
 
@@ -98,111 +100,149 @@ class _PlayerState extends State<Player> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          color: Colors.black,
-          width:
-              _isFullScreen ? MediaQuery.of(context).size.width : widget.width,
-          height: _isFullScreen
-              ? MediaQuery.of(context).size.height
-              : widget.height,
-          child: Center(
-            child: FutureBuilder(
-              future: videoInitializeFuture,
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return AspectRatio(
-                    aspectRatio: controller.value.aspectRatio,
-                    child: VideoPlayer(controller),
-                  );
-                } else {
-                  return CircularProgressIndicator();
-                }
-              },
+    return WillPopScope(
+        onWillPop: () async {
+          if (_isFullScreen) {
+            AutoOrientation.portraitAutoMode();
+            setState(() {
+              _isFullScreen = !_isFullScreen;
+            });
+            return false;
+          }
+          return true;
+        },
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.black,
+              width: _isFullScreen
+                  ? MediaQuery.of(context).size.width
+                  : widget.width,
+              height: _isFullScreen
+                  ? MediaQuery.of(context).size.height
+                  : widget.height,
+              child: Center(
+                child: FutureBuilder(
+                  future: videoInitializeFuture,
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Hero(
+                          tag: 'player',
+                          child: AspectRatio(
+                            aspectRatio: controller.value.aspectRatio,
+                            child: VideoPlayer(controller),
+                          ));
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  },
+                ),
+              ),
             ),
-          ),
-        ),
-        Positioned(
-            top: ScreenUtil().statusBarHeight,
-            left: 0,
-            child: Wrap(
-              direction: Axis.horizontal,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 20.w,
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(20.w, 10.w, 20.w, 10.w),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+            Positioned(
+                top: ScreenUtil().statusBarHeight,
+                left: 0,
+                child: Wrap(
+                  direction: Axis.horizontal,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 20.w,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        if (_isFullScreen) {
+                          setState(() {
+                            AutoOrientation.portraitAutoMode();
+                            _isFullScreen = !_isFullScreen;
+                          });
+                        } else {
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(20.w, 10.w, 20.w, 10.w),
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Text(
-                  widget.title ?? '',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.white, fontSize: 36.nsp),
-                ),
-              ],
-            )),
-        Positioned(
-            left: 0,
-            bottom: 0,
-            child: Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    controller.value.isPlaying
-                        ? controller.pause()
-                        : controller.play();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.all(20.w),
-                    child: Icon(
-                      controller.value.isPlaying
-                          ? Icons.pause
-                          : Icons.play_arrow_rounded,
-                      color: Colors.white,
+                    Text(
+                      widget.title ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.white, fontSize: 36.nsp),
                     ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 190.w,
-                  height: 50.h,
-                  alignment: Alignment.center,
-                  child: Slider(
-                    value: _position.toDouble(),
-                    max: _duration.toDouble(),
-                    onChanged: _onProgressChanged,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    _toggleFullScreen();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.all(20.w),
-                    child: Icon(
-                      _isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
-                      color: Colors.white,
+                  ],
+                )),
+            Positioned(
+                left: 0,
+                bottom: 0,
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        controller.value.isPlaying
+                            ? controller.pause()
+                            : controller.play();
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(20.w),
+                        child: Icon(
+                          controller.value.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow_rounded,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
-                )
-              ],
-            ))
-      ],
-    );
+                    Container(
+                      width: MediaQuery.of(context).size.width - 190.w,
+                      height: 50.h,
+                      alignment: Alignment.center,
+                      child: Slider(
+                        value: _position.toDouble(),
+                        max: _duration.toDouble(),
+                        onChanged: _onProgressChanged,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        _toggleFullScreen();
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(20.w),
+                        child: Icon(
+                          _isFullScreen
+                              ? Icons.fullscreen_exit
+                              : Icons.fullscreen,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  ],
+                ))
+          ],
+        ));
   }
 
   void _onProgressChanged(double value) {
     print('_onProgressChanged: $value');
   }
 
-  void _toggleFullScreen() {}
+  void _toggleFullScreen() {
+    setState(() {
+      if (_isFullScreen) {
+        AutoOrientation.portraitAutoMode();
+        // Navigator.of(context).pop();
+      } else {
+        AutoOrientation.landscapeAutoMode();
+        // Map<String, dynamic> map = {
+        //   'controller': controller,
+        //   'title': widget.title
+        // };
+        // Navigator.of(context).pushNamed('fullscreenPlayer', arguments: map);
+      }
+      _isFullScreen = !_isFullScreen;
+    });
+  }
 }
