@@ -20,9 +20,10 @@ class _DownloadItemState extends State<DownloadItem> {
     DownloadSubject subject = widget.subject;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return WebView(url: subject.h5_url);
-        }));
+        Navigator.pushNamed(context, 'detail', arguments: subject);
+        // Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //   return WebView(url: subject.h5_url);
+        // }));
       },
       child: Card(
         child: Padding(
@@ -45,8 +46,10 @@ class _DownloadItemState extends State<DownloadItem> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4.w),
                 child: CachedNetworkImage(
-                  imageUrl: subject.img,
-                  fit: BoxFit.fitWidth,
+                  imageUrl: subject.cover?.isEmpty == true
+                      ? subject.img
+                      : subject.cover,
+                  fit: BoxFit.cover,
                 ),
               ),
             )),
