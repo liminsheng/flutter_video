@@ -37,6 +37,12 @@ class _TopSubjectItemState extends State<TopSubjectItem> {
                 width: 220.w,
                 height: 320.h,
                 fit: BoxFit.cover,
+                placeholder: (context, url) {
+                  return Image.asset(
+                    'images/default_placeholder.png',
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
             Expanded(

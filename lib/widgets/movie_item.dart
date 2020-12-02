@@ -20,10 +20,9 @@ class _MovieItemState extends State<MovieItem> {
     Subject subject = widget.subject;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) {
-              return WebView(url: subject.url);
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return WebView(url: subject.url);
+        }));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,6 +36,12 @@ class _MovieItemState extends State<MovieItem> {
                   child: CachedNetworkImage(
                     imageUrl: subject.cover,
                     fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Image.asset(
+                        'images/default_placeholder.png',
+                        fit: BoxFit.cover,
+                      );
+                    },
                   ),
                 ),
               )),

@@ -23,6 +23,12 @@ class BannerItem extends StatelessWidget {
             imageUrl: banner.cover,
             width: 466.w,
             height: 320.h,
+            placeholder: (context, url) {
+              return Image.asset(
+                'images/default_placeholder.png',
+                fit: BoxFit.cover,
+              );
+            },
           ),
           Expanded(
               flex: 1,

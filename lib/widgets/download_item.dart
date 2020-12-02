@@ -50,6 +50,12 @@ class _DownloadItemState extends State<DownloadItem> {
                       ? subject.img
                       : subject.cover,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return Image.asset(
+                      'images/default_placeholder.png',
+                      fit: BoxFit.cover,
+                    );
+                  },
                 ),
               ),
             )),
@@ -89,6 +95,12 @@ class _DownloadItemState extends State<DownloadItem> {
           child: CachedNetworkImage(
             imageUrl: subject.img,
             fit: BoxFit.contain,
+            placeholder: (context, url) {
+              return Image.asset(
+                'images/default_placeholder.png',
+                fit: BoxFit.cover,
+              );
+            },
           ),
         ),
         Expanded(
