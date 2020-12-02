@@ -42,37 +42,43 @@ class _MoviePageState extends State<MoviePage>
         _subjectList.clear();
         return _retrieveData();
       },
-      child: CustomScrollView(
-        slivers: [
-          _bannerList.isNotEmpty
-              ? SliverFixedExtentList(
-                  itemExtent: 320.h,
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return _buildBanner();
-                  }, childCount: 1),
-                )
-              : SliverPadding(padding: EdgeInsets.zero),
-          SliverPadding(
-            padding: const EdgeInsets.all(8.0),
-            sliver: SliverGrid(
-              //Grid
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, //Grid按4列显示
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5,
-                childAspectRatio: 0.55,
-              ),
-              delegate: new SliverChildBuilderDelegate(
-                _buildItem,
-                childCount: _subjectList.length,
-              ),
+      child: _subjectList.isEmpty
+          ? _loading
+          : CustomScrollView(
+              slivers: [
+                _bannerList.isNotEmpty
+                    ? SliverFixedExtentList(
+                        itemExtent: 320.h,
+                        delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int index) {
+                          return _buildBanner();
+                        }, childCount: 1),
+                      )
+                    : SliverPadding(padding: EdgeInsets.zero),
+                SliverPadding(
+                  padding: const EdgeInsets.all(8.0),
+                  sliver: SliverGrid(
+                    //Grid
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4, //Grid按4列显示
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
+                      childAspectRatio: 0.55,
+                    ),
+                    delegate: new SliverChildBuilderDelegate(
+                      _buildItem,
+                      childCount: _subjectList.length,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
+
+  Widget get _loading => Center(
+        child: CircularProgressIndicator(),
+      );
 
   void _loadBannerData() {
     rootBundle.loadString('assets/banner_list.json').then((value) {
@@ -88,7 +94,7 @@ class _MoviePageState extends State<MoviePage>
         type: Global.type_movie,
         tag: widget.tag,
         sort: Global.sort_recommend,
-        pageStart: _subjectList.length ~/ 20,
+        pageStart: _subjectList.length,
         pageLimit: 20,
         refresh: false);
     setState(() {

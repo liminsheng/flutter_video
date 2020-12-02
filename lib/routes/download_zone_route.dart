@@ -12,39 +12,48 @@ class DownloadZoneRoute extends StatefulWidget {
 }
 
 class _DownloadZoneRouteState extends State<DownloadZoneRoute> {
-  List<DownloadSubject> _downloadList = [];
-
-  @override
-  void initState() {
-    _loadDownloadData();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('下载专区', style: TextStyle(fontFamily: 'ZhiMangXing')),
       ),
-      body: StaggeredGridView.countBuilder(
-        crossAxisCount: 4,
-        itemCount: _downloadList.length,
-        itemBuilder: (BuildContext context, int index) =>
-            DownloadItem(_downloadList[index], index.isEven),
-        staggeredTileBuilder: (int index) =>
-            StaggeredTile.count(2, index.isEven ? 2 : 1),
-        mainAxisSpacing: 4.0.h,
-        crossAxisSpacing: 4.0.w,
+      body: FutureBuilder<List<DownloadSubject>>(
+        future: _loadDownloadData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('网络跑到外星球去了...'),
+              );
+            } else {
+              var downloadList = snapshot.data;
+              return StaggeredGridView.countBuilder(
+                crossAxisCount: 4,
+                itemCount: downloadList.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    DownloadItem(downloadList[index], index.isEven),
+                staggeredTileBuilder: (int index) =>
+                    StaggeredTile.count(2, index.isEven ? 2 : 1),
+                mainAxisSpacing: 4.0.h,
+                crossAxisSpacing: 4.0.w,
+              );
+            }
+          } else {
+            return _loading;
+          }
+        },
       ),
     );
   }
 
-  void _loadDownloadData() {
-    rootBundle.loadString('assets/download_list.json').then((value) {
-      var list = json.decode(value) as List;
-      setState(() {
-        _downloadList = list.map((e) => DownloadSubject.fromJson(e)).toList();
-      });
-    });
+  Widget get _loading => Center(
+        child: CircularProgressIndicator(),
+      );
+
+  Future<List<DownloadSubject>> _loadDownloadData() async {
+    var value = await rootBundle.loadString('assets/download_list.json');
+    var list = json.decode(value) as List;
+    return list.map((e) => DownloadSubject.fromJson(e)).toList();
   }
 }
