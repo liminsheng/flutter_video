@@ -35,6 +35,9 @@ class MyLocalizations {
   String get teal => Intl.message('Teal', name: 'teal', desc: '');
   String get green => Intl.message('Green', name: 'green', desc: '');
   String get red => Intl.message('Red', name: 'red', desc: '');
+  String get download => Intl.message('Download', name: 'download', desc: '');
+  String get downloaded => Intl.message('Downloaded', name: 'downloaded', desc: '');
+  String get downloading => Intl.message('Downloading', name: 'downloading', desc: '');
 }
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

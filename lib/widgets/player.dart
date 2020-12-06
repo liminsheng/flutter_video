@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_orientation/auto_orientation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,13 @@ class _PlayerState extends State<Player> {
     super.initState();
     AutoOrientation.portraitAutoMode();
     print('Player url: ${widget.url}');
-    controller = VideoPlayerController.network(widget.url);
+    if (widget.type == UrlType.network) {
+      controller = VideoPlayerController.network(widget.url);
+    } else if (widget.type == UrlType.asset) {
+      controller = VideoPlayerController.asset(widget.url);
+    } else {
+      controller = VideoPlayerController.file(File(widget.url));
+    }
     controller.addListener(_videoListener);
     videoInitializeFuture = controller.initialize().then((value) {
       setState(() {});
@@ -166,11 +174,13 @@ class _PlayerState extends State<Player> {
                         ),
                       ),
                     ),
-                    Text(
-                      widget.title ?? '',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.white, fontSize: 36.nsp),
+                    InkWell(
+                      child: Text(
+                        widget.title ?? '',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.white, fontSize: 36.nsp),
+                      ),
                     ),
                   ],
                 )),

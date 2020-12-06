@@ -83,5 +83,23 @@
     "description": "",
     "type": "text",
     "placeholders": {}
+  },
+  "download": "下载",
+  "@download": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "downloaded": "已下载",
+  "@downloaded": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "downloading": "正在下载",
+  "@downloading": {
+     "description": "",
+     "type": "text",
+     "placeholders": {}
   }
 }

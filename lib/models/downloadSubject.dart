@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
+import "episode.dart";
 part 'downloadSubject.g.dart';
 
 @JsonSerializable()
@@ -10,8 +10,7 @@ class DownloadSubject {
     String img;
     String cover;
     String title;
-    String h5_url;
-    String url;
+    List<Episode> episodes;
     String type;
     String year;
     String sub_title;

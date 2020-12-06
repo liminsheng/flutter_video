@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-11-29T15:51:49.437480",
+  "@@last_modified": "2020-12-06T20:00:03.016358",
   "title": "Douban Movies",
   "@title": {
     "description": "Title for the application",
@@ -74,6 +74,24 @@
   },
   "red": "Red",
   "@red": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "download": "Download",
+  "@download": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "downloaded": "Downloaded",
+  "@downloaded": {
+    "description": "",
+    "type": "text",
+    "placeholders": {}
+  },
+  "downloading": "Downloading",
+  "@downloading": {
     "description": "",
     "type": "text",
     "placeholders": {}

@@ -3,7 +3,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_video/common/global.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 import 'package:flutter_video/routes/detail_route.dart';
+import 'package:flutter_video/routes/download_play_route.dart';
+import 'package:flutter_video/routes/download_route.dart';
 import 'package:flutter_video/routes/download_zone_route.dart';
+import 'package:flutter_video/routes/downloading_route.dart';
 import 'package:flutter_video/routes/fullscreen_player.dart';
 import 'package:flutter_video/routes/home_route.dart';
 import 'package:flutter_video/routes/language_route.dart';
@@ -72,10 +75,14 @@ class MyApp extends StatelessWidget {
               'language': (context) => LanguageRoute(),
               'top': (context) => TopRoute(),
               'downloadZone': (context) => DownloadZoneRoute(),
+              'download': (context) => DownloadRoute(),
               'detail': (context) => DetailRoute(
                   downloadSubject: ModalRoute.of(context).settings.arguments),
               'fullscreenPlayer': (context) => FullscreenPlayer(
                   data: ModalRoute.of(context).settings.arguments),
+              'downloadPlay': (context) => DownloadPlayRoute(
+                  episode: ModalRoute.of(context).settings.arguments),
+              'downloading': (context) => DownloadingRoute(),
             },
           );
         },

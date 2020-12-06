@@ -7,7 +7,8 @@ class MovieDetail extends StatelessWidget {
   final Abstract abstract;
   final Function onDownload;
 
-  const MovieDetail({Key key, @required this.abstract, this.onDownload}) : super(key: key);
+  const MovieDetail({Key key, @required this.abstract, this.onDownload})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +19,7 @@ class MovieDetail extends StatelessWidget {
               ListTile(
                 trailing: GestureDetector(
                   onTap: onDownload,
-                  child: Column(
-                    children: [
-                      Icon(Icons.download_sharp),
-                      Text('下载')
-                    ],
-                  ),
+                  child: Icon(Icons.download_rounded),
                 ),
                 title: Text(
                   abstract.title,

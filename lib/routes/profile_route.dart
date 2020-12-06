@@ -24,6 +24,11 @@ class _ProfileRouteState extends State<ProfileRoute> {
           title: Text(my.language),
           onTap: () => Navigator.pushNamed(context, 'language'),
         ),
+        ListTile(
+          leading: Icon(Icons.download_rounded),
+          title: Text(my.download),
+          onTap: () => Navigator.pushNamed(context, 'download'),
+        ),
       ],
     );
   }

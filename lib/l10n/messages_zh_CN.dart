@@ -23,6 +23,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "blue" : MessageLookupByLibrary.simpleMessage("天空蓝"),
     "cyan" : MessageLookupByLibrary.simpleMessage("天青色"),
+    "download" : MessageLookupByLibrary.simpleMessage("下载"),
+    "downloaded" : MessageLookupByLibrary.simpleMessage("已下载"),
+    "downloading" : MessageLookupByLibrary.simpleMessage("正在下载"),
     "green" : MessageLookupByLibrary.simpleMessage("清新绿"),
     "language" : MessageLookupByLibrary.simpleMessage("语言"),
     "movie" : MessageLookupByLibrary.simpleMessage("电影"),
