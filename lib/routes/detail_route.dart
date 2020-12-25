@@ -89,6 +89,6 @@ class _DetailRouteState extends State<DetailRoute> {
 
   void _downloadMovie(Episode episode) {
     print('下载${episode.title} ${episode.episode}');
-    DownloadUtil.instance(context).addDownload(DownloadTask(context, episode));
+    DownloadUtil.getInstance(context).addDownload(DownloadTask(context, episode));
   }
 }

@@ -17,7 +17,7 @@ create table $tableDownload (
   title text,
   url text,
   id integer,
-  parentId' text,
+  parentId text,
   type text,
   path text,
   size long,

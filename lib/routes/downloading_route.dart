@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/common/download_provider.dart';
+import 'package:flutter_video/common/download_task.dart';
+import 'package:flutter_video/common/download_util.dart';
 import 'package:flutter_video/l10n/localization_intl.dart';
 import 'package:flutter_video/models/episode.dart';
 
@@ -13,11 +17,17 @@ class DownloadingRoute extends StatefulWidget {
 class _DownloadingRouteState extends State<DownloadingRoute> {
   DownloadProvider downloadProvider = DownloadProvider();
   Future loadDataFuture;
+  List<DownloadTask> _downloadTasks = [];
+  Timer _timer;
 
   @override
   void initState() {
-    setState(() {
-      loadDataFuture = getData();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      var tasks = DownloadUtil.getInstance(context).downloadTask;
+      print('periodic ${tasks.length}');
+      setState(() {
+        _downloadTasks = tasks;
+      });
     });
     super.initState();
   }
@@ -25,6 +35,7 @@ class _DownloadingRouteState extends State<DownloadingRoute> {
   @override
   void dispose() {
     downloadProvider.close();
+    _timer.cancel();
     super.dispose();
   }
 
@@ -35,36 +46,13 @@ class _DownloadingRouteState extends State<DownloadingRoute> {
         title: Text(MyLocalizations.of(context).downloading,
             style: TextStyle(fontFamily: 'ZhiMangXing')),
       ),
-      body: RefreshIndicator(
-        onRefresh: () {
-          setState(() {
-            loadDataFuture = getData();
-          });
-          return loadDataFuture;
-        },
-        child: FutureBuilder<List<Episode>>(
-          future: loadDataFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError) {
-                return _noData;
-              } else if (snapshot.hasData) {
-                return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return _buildItem(snapshot.data[index]);
-                    });
-              } else {
-                return _noData;
-              }
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ),
+      body: _downloadTasks.length == 0
+          ? _noData
+          : ListView.builder(
+              itemCount: _downloadTasks.length,
+              itemBuilder: (context, index) {
+                return _buildItem(_downloadTasks[index]);
+              }),
     );
   }
 
@@ -89,7 +77,7 @@ class _DownloadingRouteState extends State<DownloadingRoute> {
     return list;
   }
 
-  Widget _buildItem(Episode episode) {
+  Widget _buildItem(DownloadTask task) {
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(4),
@@ -97,7 +85,7 @@ class _DownloadingRouteState extends State<DownloadingRoute> {
           width: 160.h,
           height: 90.w,
           child: CachedNetworkImage(
-            imageUrl: episode.cover,
+            imageUrl: task.episode.cover,
             fit: BoxFit.cover,
             placeholder: (context, url) {
               return Image.asset(
@@ -108,10 +96,10 @@ class _DownloadingRouteState extends State<DownloadingRoute> {
           ),
         ),
       ),
-      title: Text(episode.title),
-      subtitle: Text('第${episode.episode}集'),
+      title: Text(task.episode.title),
+      subtitle: Text('第${task.episode.episode}集 已下载: ${task.episode.progress}'),
       onTap: () {
-        Navigator.pushNamed(context, 'downloadPlay', arguments: episode);
+        // Navigator.pushNamed(context, 'downloadPlay', arguments: task.episode);
       },
     );
   }

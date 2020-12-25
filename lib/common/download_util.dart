@@ -19,14 +19,20 @@ class DownloadUtil {
 
   List<DownloadTask> get downloadTask => _downloadTask;
 
-  DownloadUtil(BuildContext context) {
+  DownloadUtil.internal(BuildContext context) {
     _dio = Dio();
     _context = context;
     _downloadHelp = DownloadProvider();
   }
 
-  static DownloadUtil instance(BuildContext context) {
-    return _downloadUtil == null ? DownloadUtil(context) : _downloadUtil;
+  factory DownloadUtil.getInstance(BuildContext context) =>
+      _getInstance(context);
+
+  static _getInstance(BuildContext context) {
+    if (_downloadUtil == null) {
+      _downloadUtil = DownloadUtil.internal(context);
+    }
+    return _downloadUtil;
   }
 
   void addDownload(DownloadTask task) async {
@@ -35,7 +41,9 @@ class DownloadUtil {
     if (exists) {
       Fluttertoast.showToast(msg: '已在下载列表中');
     } else {
-      downloadTask.add(task);
+      _downloadTask.add(task);
+      print('task list length = ${_downloadTask.length}');
+      task.download();
     }
   }
 
@@ -81,7 +89,8 @@ class DownloadUtil {
     return '/' + episode.parentId + '/' + split.last;
   }
 
-  Future<Response> downloadMovie(Episode episode, onProgressChange) async {
+  Future<Response> downloadMovie(
+      Episode episode, CancelToken cancelToken, onProgressChange) async {
     bool granted = await checkPermissionsFunction();
     if (granted) {
       if (_savePath == null) {
@@ -89,7 +98,7 @@ class DownloadUtil {
       }
       await _downloadHelp.insert(episode);
       String path = _savePath + _getFileName(episode);
-      return await _dio.download(episode.url, path,
+      return await _dio.download(episode.url, path, cancelToken: cancelToken,
           onReceiveProgress: (int count, int total) {
         if (total != -1) {
           onProgressChange(count, total, path);
@@ -109,10 +118,12 @@ class DownloadUtil {
       return true;
     } else {
       var queryEpisode = await _downloadHelp.getEpisode(episode.url);
-      var exists = await File(queryEpisode.path).exists();
-      if (queryEpisode?.finish == true && exists) {
-        print('下载已完成...');
-        return true;
+      if (queryEpisode != null) {
+        var exists = await File(queryEpisode.path).exists();
+        if (queryEpisode?.finish == true && exists) {
+          print('下载已完成...');
+          return true;
+        }
       }
     }
     return false;
